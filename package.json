@@ -1,5 +1,5 @@
 {
-  "name": "blast-radius-mcp",
+  "name": "@rexy_mayderio/blast-radius-mcp",
   "version": "1.0.0",
   "description": "Local MCP server that maps a code change to callers, boundaries, tests, co-changed files, and a clamped risk score",
   "type": "module",

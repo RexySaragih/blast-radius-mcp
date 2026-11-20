@@ -8,10 +8,23 @@ Local MCP server that maps a code change to callers, boundaries, tests, co-chang
 
 ## Install
 
-```bash
-npm install
-npm run build
+Node.js `>=22`. Add this to Cursor or Claude `mcp.json`. `npx` downloads the package on first launch:
+
+```json
+{
+  "mcpServers": {
+    "blast-radius": {
+      "command": "npx",
+      "args": ["-y", "@rexy_mayderio/blast-radius-mcp"],
+      "env": {
+        "BLAST_RADIUS_ROOT": "/absolute/path/to/your/repo"
+      }
+    }
+  }
+}
 ```
+
+Restart the MCP server after saving that file.
 
 ## Workspace root
 
@@ -27,21 +40,14 @@ Resolution order:
 
 Cursor launches MCP servers from its own working directory, so set `BLAST_RADIUS_ROOT` there. The git and cwd fallbacks apply when you start the process inside the repo.
 
-## Cursor / Claude mcp.json (stdio)
+## Develop this repo
 
-```json
-{
-  "mcpServers": {
-    "blast-radius": {
-      "command": "node",
-      "args": ["/absolute/path/to/blast-radius-mcp/dist/index.js"],
-      "env": {
-        "BLAST_RADIUS_ROOT": "/absolute/path/to/your/repo"
-      }
-    }
-  }
-}
+```bash
+npm install
+npm run build
 ```
+
+To run a local checkout instead of the published package, point `command` at `node` and `args` at `dist/index.js` inside that checkout. Keep `BLAST_RADIUS_ROOT` on the repo you want indexed.
 
 ## Cache
 
