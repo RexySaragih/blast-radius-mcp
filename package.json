@@ -1,0 +1,37 @@
+{
+  "name": "blast-radius-mcp",
+  "version": "1.0.0",
+  "description": "Local MCP server that maps a code change to callers, boundaries, tests, co-changed files, and a clamped risk score",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "blast-radius-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && chmod +x dist/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "test": "vitest run",
+    "test:connections": "npm run build && node dist/scripts/test-connections.js",
+    "smoke": "npm run build && node dist/scripts/smoke.js",
+    "start": "node dist/index.js",
+    "depcruise": "depcruise src/domain src/application --config .dependency-cruiser.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "tree-sitter-wasms": "0.1.13",
+    "web-tree-sitter": "0.22.6",
+    "zod": "4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.1",
+    "dependency-cruiser": "18.8.0",
+    "typescript": "5.9.3",
+    "vitest": "4.0.8"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+test-dist/
+*.tsbuildinfo
+.vite/
+.planora/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+coverage/
+.mcp/
+qc-report.json
